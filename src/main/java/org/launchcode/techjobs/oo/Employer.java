@@ -2,7 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class Employer {
+public class Employer extends Job {
 
     private int id;
     private static int nextId = 1;
@@ -22,7 +22,11 @@ public class Employer {
 
     @Override
     public String toString() {
-        return value;
+        if(value == null || value.isEmpty()) {
+        return "Data not available";
+    } else {
+            return value;
+        }
     }
 
     @Override
@@ -30,12 +34,12 @@ public class Employer {
         if (this == o) return true;
         if (!(o instanceof Employer)) return false;
         Employer employer = (Employer) o;
-        return getId() == employer.getId();
+        return Objects.equals(getValue(), employer.getValue()) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getValue());
     }
 
     // Getters and Setters:
